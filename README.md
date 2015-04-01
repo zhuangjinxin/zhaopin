@@ -25,7 +25,9 @@ JDK版本：jdk1.7
 |    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|— —userqiuzhi.html	//求职信息<br>
 |    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|— —useremail.html		//求职者邮件<br>
 
-#<h5>关于作者</h5>
+#<h5>项目致谢</h5>
+本项目使用基于html5前端框架Amaze UI,感谢一直为妹子辛勤付出的小伙伴们！<br>
+Amaze UI：<a href="http://amazeui.org">http://amazeui.org</a><br>
 
 #<h5>版权声明</h5>
 该项目是仅作为毕业设计答辩展示代码使用，不作他用。
