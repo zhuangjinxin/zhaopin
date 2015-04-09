@@ -1,0 +1,47 @@
+友情链接表：links
+编号    链接名    网址  图片名字
+linkid linkname linkurl linkimg 
+
+管理员表：admins
+管理员编号 管理员姓名 管理员密码 管理员邮箱
+adminid    adminname   adminpwd   adminemail
+
+用户基本信息表：users
+用户编号 用户姓名 用户密码 用户邮箱  性别       头像地址     学校    专业      毕业年份
+userid   username userpwd  useremail usergender userphoto userschool userfield usergraduate 
+
+用户工作经验表：experience
+经验编号 用户编号(外) 公司名称  职位  开始时间 结束时间  项目简介 项目职责 项目成果
+expid    userid   	cname   position starttime endtime program   duty     result
+
+企业表：companys
+企业编号     企业名称    企业密码    企业邮箱     企业logo     企业简介     企业规模    企业位置 
+companyid   companyname companypwd companyemail  companylogo companybrief  companysize companylocate
+
+求职信息表：（求职者）qiuzhi
+求职信息编号 用户编号(外)  求职职位名称 期望薪资  期望城市 发布时间
+qiuzhiid      userid        q_jobname   q_salary   q_city    q_time
+
+招聘信息表：（企业）zhaopin 
+招聘信息编号 企业编号(外)  招聘职位名称 薪资     工作城市 职位描述      职位要求        发布时间   搜索次数
+zhaopinid    companyid     z_jobname    z_salary  z_city  z_description z_requirements   z_time     z_count
+
+邀请函表：yaoqing
+邀请函编号 求职者编号(外) 企业编号(外)   求职信息编号(外)  状态   邀请时间
+yaoqingid  userid          companyid        qiuzhiid     status  yaoqingtime
+
+求职信表：qiuzhixin
+求职信编号 求职者编号(外) 企业编号(外) 招聘信息编号(外) 状态   求职时间
+qiuzhixinid userid         companyid   zhaopinid       status  qiuzhitime
+
+
+
+
+
+
+
+
+
+
+
+
