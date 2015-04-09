@@ -1,6 +1,6 @@
-CREATE DATABASE zhaopins;
+CREATE DATABASE zhaopin;
 
-USE zhaopins;
+USE zhaopin;
 
 CREATE TABLE links(
 		linkid INT (10) auto_increment PRIMARY KEY,
