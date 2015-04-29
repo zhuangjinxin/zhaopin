@@ -27,20 +27,98 @@
     <servlet-name>UserLoginServlet</servlet-name>
     <servlet-class>com.zhaopin.servlet.UserLoginServlet</servlet-class>
   </servlet>
-  <!-- 企业登录 -->>
+  <!-- 企业登录 -->
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>CompanyLoginServlet</servlet-name>
     <servlet-class>com.zhaopin.servlet.CompanyLoginServlet</servlet-class>
   </servlet>>
-  <!-- 注册 -->>
+  <!-- 注册 -->
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.zhaopin.servlet.RegisterServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ZhaopinServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.ZhaopinServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>JoblistServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.JoblistServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>JobSearchServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.JobSearchServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserlistServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.UserlistServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ManlistServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.ManlistServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AdminhomeServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.AdminhomeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AdminuserServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.AdminuserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserhomeServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.UserhomeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserqiuzhiServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.UserqiuzhiServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>JobdetailServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.JobdetailServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MandetailServlet</servlet-name>
+    <servlet-class>com.zhaopin.servlet.MandetailServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
 
 
   
@@ -55,6 +133,50 @@
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ZhaopinServlet</servlet-name>
+    <url-pattern>/ZhaopinServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JoblistServlet</servlet-name>
+    <url-pattern>/JoblistServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JobSearchServlet</servlet-name>
+    <url-pattern>/JobSearchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserlistServlet</servlet-name>
+    <url-pattern>/UserlistServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ManlistServlet</servlet-name>
+    <url-pattern>/ManlistServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminhomeServlet</servlet-name>
+    <url-pattern>/AdminhomeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminuserServlet</servlet-name>
+    <url-pattern>/AdminuserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserhomeServlet</servlet-name>
+    <url-pattern>/UserhomeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserqiuzhiServlet</servlet-name>
+    <url-pattern>/UserqiuzhiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JobdetailServlet</servlet-name>
+    <url-pattern>/JobdetailServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MandetailServlet</servlet-name>
+    <url-pattern>/MandetailServlet</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

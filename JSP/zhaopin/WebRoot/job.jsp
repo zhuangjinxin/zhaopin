@@ -1,9 +1,10 @@
-<%@ page language="java" import="java.util.*,com.zhaopin.po.*" pageEncoding="UTF-8"%>>
+<%@ page language="java" import="java.util.*,com.zhaopin.po.*,java.net.URLDecoder;" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title>å·¥ä½èä½</title>
+  <title>工作职位</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
@@ -18,26 +19,26 @@
 <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
   <div class="am-container">
     <h1 class="am-topbar-brand">
-      <a href="index.html">çèæèç½</a>
+      <a href="index.jsp">猎聘招聘网</a>
     </h1>
 
     <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
-            data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">å¯¼èªåæ¢</span> <span
+            data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
         class="am-icon-bars"></span></button>
 
     <div class="am-collapse am-topbar-collapse" id="collapse-head">
       <ul class="am-nav am-nav-pills am-topbar-nav">
-        <li ><a href="index.html">é¦é¡µ</a></li>
-        <li class="am-active"><a href="job.html">å·¥ä½èä½</a></li>
-		<li><a href="man.html">ç²¾è±äººæ</a></li>
+        <li ><a href="index.jsp">首页</a></li>
+        <li class="am-active"><a href="job.jsp">工作职位</a></li>
+		<li><a href="man.jsp">精英人才</a></li>
       </ul>
 
       <div class="am-topbar-right">
-        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> æ³¨å</button>
+         <a href="register.jsp" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm" role="button"><span class="am-icon-pencil"></span> 注册</a>
       </div>
 
       <div class="am-topbar-right">
-        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> ç»å½</button>
+        <a href="login.jsp" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm" role="button"><span class="am-icon-user"></span> 登录</a>
       </div>
     </div>
   </div>
@@ -48,105 +49,56 @@
 <div class="am-g am-g-fixed blog-g-fixed">
   <div class="am-u-md-8">
     <article class="blog-main">
-		<!--æç´¢æ¡-->
-		  <div class="am-input-group am-input-group-primary">
-			  <input type="text" class="am-form-field" placeholder="è¾å¥èä½åç§°ãå¬å¸åç§°è¯è¯ï¼">
-			  <span class="am-input-group-btn">
-				<button class="am-btn am-btn-primary" type="button">æç´¢</button>
-			  </span>
+    
+		<!--搜索框-->
+			<form action="JobSearchServlet" method="post">
+			<div class="am-input-group am-input-group-primary">
+				<input type="text" class="am-form-field" name="keyword" placeholder="输入职位名称、公司名称试试！">
+				<span class="am-input-group-btn">
+					<button class="am-btn am-btn-primary" type="submit">搜索</button>
+				</span>
 			</div>
+			</form>
 		<br>
-		<!--æç´¢ç»æé¢æ¿-->
+		<!--搜索结果面板-->
 		<section class="am-panel am-panel-default">
 		  <header class="am-panel-hd">
-			<h3 class="am-panel-title">å·¥ä½æºä¼</h3>
+			<h3 class="am-panel-title">工作机会</h3>
 		  </header>
 		  <div class="am-panel-bd">
-				<div class="doc-example"><article class="am-comment">
-				<a href="#link-to-user-home"><img src="img/baidu.png" alt="" class="am-comment-avatar" width="48" height="48"/></a>
-				<div class="am-comment-main">
-				<header class="am-comment-hd">
-					<div class="am-comment-meta">
-						<a href="#link-to-user" class="am-comment-author">ç¾åº¦</a> åå¸äº <time datetime="2013-07-27T04:54:29-07:00" title="2013å¹´7æ27æ¥ ä¸å7:54 æ ¼æå°¼æ²»æ åæ¶é´+0800">2014-7-12 15:30</time>
-					</div>
-					<div class="am-comment-actions">
-						<a href=""><font color="blue">è¯¦ç»ä¿¡æ¯</font></a> 
-						<a href=""><i class="am-icon-thumbs-up"></i></a> 
-						<a href=""><i class="am-icon-thumbs-down"></i></a>
-					</div>
-				</header>
-				<div class="am-comment-bd">
-					<table  class="am-table am-table-bordered"> 
-						<tr> 
-							<td>èä½åç§°ï¼Javaå·¥ç¨å¸ </td><td> å·¥ä½å°ç¹ï¼åäº¬</td>  <td> èªèµï¼15K~20K </td> 
-						</tr> 
-						<tr> 
-						<td> å·¥ä½å°ç¹ï¼åäº¬</td> <td> å·¥ä½å°ç¹ï¼åäº¬</td><td>å¶ä»ç¦å©ï¼äºé©ä¸é </td> 
-						</tr> 
-					</table> 
-				</div>
-				</div>
-			</div>
-
-			<br>
-
-			<div class="doc-example"><article class="am-comment">
-				<a href="#link-to-user-home"><img src="img/xinlang.png" alt="" class="am-comment-avatar" width="48" height="48"/></a>
-				<div class="am-comment-main">
-				<header class="am-comment-hd">
-					<div class="am-comment-meta">
-						<a href="#link-to-user" class="am-comment-author">æ°æµª</a> åå¸äº <time datetime="2013-07-27T04:54:29-07:00" title="2013å¹´7æ27æ¥ ä¸å7:54 æ ¼æå°¼æ²»æ åæ¶é´+0800">2014-7-12 15:30</time>
-					</div>
-					<div class="am-comment-actions">
-						<a href=""><i class="am-icon-thumbs-up"></i></a> 
-						<a href=""><i class="am-icon-thumbs-down"></i></a>
-					</div>
-				</header>
-				<div class="am-comment-bd">
-					<p>é£ï¼é£æ¯ä¸å°åç»åé¨æ¯äº²çä¿¡ãæè«ç¶ç«å¨éªæ¥¼ä¸ï¼æåçå°æ°¸è¿çæ¨±å­èµ°å°è¡å¿ãå¶å®é¨ä¸å¾å¹¶ä¸å¤§ï¼å´æ¯ä¸çä¸ä¸ä¸­æå¤§çä¸åºé¨ãèé£å°ä¿¡æ¯è¿æ ·åçï¼å¹´è½»çæ¨±å­ç¥ä¸ç¥éå¢ï¼</p>
-				</div>
-			</div>
-
-			<br>
-
-			<div class="doc-example"><article class="am-comment">
-				<a href="#link-to-user-home"><img src="img/aiqiyi.png" alt="" class="am-comment-avatar" width="48" height="48"/></a>
-				<div class="am-comment-main">
-				<header class="am-comment-hd">
-					<div class="am-comment-meta">
-						<a href="#link-to-user" class="am-comment-author">ç±å¥èº</a> åå¸äº <time datetime="2013-07-27T04:54:29-07:00" title="2013å¹´7æ27æ¥ ä¸å7:54 æ ¼æå°¼æ²»æ åæ¶é´+0800">2014-7-12 15:30</time>
-					</div>
-					<div class="am-comment-actions">
-						<a href=""><i class="am-icon-thumbs-up"></i></a> 
-						<a href=""><i class="am-icon-thumbs-down"></i></a>
-					</div>
-				</header>
-				<div class="am-comment-bd">
-					<p>é£ï¼é£æ¯ä¸å°åç»åé¨æ¯äº²çä¿¡ãæè«ç¶ç«å¨éªæ¥¼ä¸ï¼æåçå°æ°¸è¿çæ¨±å­èµ°å°è¡å¿ãå¶å®é¨ä¸å¾å¹¶ä¸å¤§ï¼å´æ¯ä¸çä¸ä¸ä¸­æå¤§çä¸åºé¨ãèé£å°ä¿¡æ¯è¿æ ·åçï¼å¹´è½»çæ¨±å­ç¥ä¸ç¥éå¢ï¼</p>
-				</div>
-				</div>
-			</div>
-
-			<br>
-
-			<div class="doc-example"><article class="am-comment">
-				<a href="#link-to-user-home"><img src="img/google.png" alt="" class="am-comment-avatar" width="48" height="48"/></a>
-				<div class="am-comment-main">
-				<header class="am-comment-hd">
-					<div class="am-comment-meta">
-						<a href="#link-to-user" class="am-comment-author">è°·æ­</a> åå¸äº <time datetime="2013-07-27T04:54:29-07:00" title="2013å¹´7æ27æ¥ ä¸å7:54 æ ¼æå°¼æ²»æ åæ¶é´+0800">2014-7-12 15:30</time>
-					</div>
-					<div class="am-comment-actions">
-						<a href=""><i class="am-icon-thumbs-up"></i></a> 
-						<a href=""><i class="am-icon-thumbs-down"></i></a>
-					</div>
-				</header>
-				<div class="am-comment-bd">
-					<p>é£ï¼é£æ¯ä¸å°åç»åé¨æ¯äº²çä¿¡ãæè«ç¶ç«å¨éªæ¥¼ä¸ï¼æåçå°æ°¸è¿çæ¨±å­èµ°å°è¡å¿ãå¶å®é¨ä¸å¾å¹¶ä¸å¤§ï¼å´æ¯ä¸çä¸ä¸ä¸­æå¤§çä¸åºé¨ãèé£å°ä¿¡æ¯è¿æ ·åçï¼å¹´è½»çæ¨±å­ç¥ä¸ç¥éå¢ï¼</p>
-				</div>
-				</div>
-			</div>
-
+		  	 <%
+				List<Joblist> joblist = (List<Joblist>)request.getAttribute("JobSearch");
+				if(null == joblist){
+				System.out.println("为什么会是空的呢？");
+				response.sendRedirect("JobSearchServlet");
+				}else{
+				int i = 1;
+				for(Joblist jc : joblist){
+			%>	
+						<div class="doc-example"><article class="am-comment">
+							<a href="#link-to-user-home"><img src="<%=jc.getCompanylogo()%>" alt="" class="am-comment-avatar" width="48" height="48"/></a>
+							<div class="am-comment-main">
+								<header class="am-comment-hd">
+									<div class="am-comment-meta">
+										<a href="#" class="am-comment-author"><%=jc.getCompanyname()%></a>发布于 <time datetime="2013-07-27T04:54:29-07:00" > <%=jc.getZ_time()%></time>
+									</div>
+									<div class="am-comment-actions"> 
+										<a href=""><i class="am-icon-thumbs-up"></i></a>
+										<a href=""><i class="am-icon-thumbs-down"></i></a> 
+									</div>
+								</header>
+								<div class="am-comment-bd">
+								<form class="am-form" action="JobdetailServlet" method="post">
+									职位：<input type="submit" class="am-btn am-btn-link" value=<%=jc.getZ_jobname()%>>
+									工作城市：<%=jc.getZ_city()%>&nbsp;&nbsp;
+									薪资：<%=jc.getZ_salary()%>
+									<input type="hidden"  name="zid" value=<%=jc.getZhaopinid()%>>
+								</form>
+								</div>
+							</div>
+						</div>
+						<br>
+			<%}} %>
 			<br>
 			<ul class="am-pagination am-pagination-centered">
 			  <li class="am-disabled"><a href="#">&laquo;</a></li>
@@ -165,134 +117,126 @@
   <div class="am-u-md-4 blog-sidebar">
     <div class="am-panel-group">
 	  <section class="am-panel am-panel-default">
-        <div class="am-panel-hd">ç­é¨èä½</div>
-        <div class="am-panel-bd">
-			<table class="am-table">
-				<tr>
-					<td>ç¾åº¦</td>
-					<td>äº§åç»ç</td>
-					<td>8K~15K</td>
-					<td><span class="am-badge am-badge-danger am-round">1</span></td>
-				</tr>
-				<tr>
-					<td>ç¾åº¦</td>
-					<td>äº§åç»ç</td>
-					<td>8K~15K</td>
-					<td><span class="am-badge am-badge-warning am-round">2</span></td>
-				</tr>
-				<tr>
-					<td>ç¾åº¦</td>
-					<td>äº§åç»ç</td>
-					<td>8K~15K</td>
-					<td><span class="am-badge am-badge-success am-round">3</span></td>
-				</tr>
-				<tr>
-					<td>ç¾åº¦</td>
-					<td>äº§åç»ç</td>
-					<td>8K~15K</td>
-					<td><span class="am-badge am-badge-secondary am-round">4</span></td>
-				</tr>
-				<tr>
-					<td>ç¾åº¦</td>
-					<td>äº§åç»ç</td>
-					<td>8K~15K</td>
-					<td><span class="am-badge am-round">5</span></td>
-				</tr>
-			  </table>
-        </div>
-      </section>
-	 <section class="am-panel am-panel-default">
-        <div class="am-panel-hd">ç­é¨å¬å¸</div>
-        <div class="am-panel-bd">
-          <p>åææªæçä¸­æäºç«¯å­åæå¡ï¼è®©æ¨å¨ web å¹³å°ä¸èªç±ä½¿ç¨é«åè´¨ä¸­æå­ä½ï¼è·¨å¹³å°ãå¯æå¯»ï¼èä¸è¶ç¾ãäºç«¯å­åæ¯æä»¬çäºä¸ï¼æ¨å¹¿å­åå­¦ç¥è¯æ¯æä»¬çå¿ä¸ãä»å­ä½åºåï¼å³å¿è®¾è®¡ä¸æä»¬ççæ´»ï¼justfont blog
-            æ­£æ¯çºæ­¤èçã</p>
-        </div>
-      </section>
+	        	<div class="am-panel-hd">热门职位</div>
+	        	<div class="am-panel-bd">
+					<table class="am-table">
 
-      <section class="am-panel am-panel-default">
-        <div class="am-panel-hd">ç¸å³é¾æ¥</div>
-        <div class="am-panel-bd">
-          <ul class="am-avg-sm-4 blog-team">
-            <li><a href="http://www.zhaopin.com"><img class="am-thumbnail"
-                     src="img/link/zhilian.png" alt=""/></a>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/dajie.png" alt=""/>
-            </li>
-            <li><a href="http://www.neitui.me"><img class="am-thumbnail"
-                     src="img/link/neitui.jpg" alt=""/></a>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/lagou.jpg" alt=""/>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/58.png" alt=""/>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/yingjiesheng.png" alt=""/>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/yingcai.png" alt=""/>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/ganji.png" alt=""/>
-            </li>
-          </ul>
-        </div>
-      </section>
-	  <section class="am-panel am-panel-default">
-        <div class="am-panel-hd">æ´å¤æºä¼</div>
-        <div class="am-panel-bd">
+						<tr>
+							<td>百度</td>
+							<td>软件工程师</td>
+							<td>12K~15K</td>
+							<td><span class="am-badge am-badge-danger am-round">1</span></td>
+						</tr>
+						<tr>
+							<td>腾讯</td>
+							<td>研发工程师</td>
+							<td>10K~14K</td>
+							<td><span class="am-badge am-badge-warning am-round">2</span></td>
+						</tr>
+						<tr>
+							<td>微软</td>
+							<td>.NET工程师</td>
+							<td>8K~13K</td>
+							<td><span class="am-badge am-badge-success am-round">3</span></td>
+						</tr>
+						<tr>
+							<td>新浪</td>
+							<td>产品经理</td>
+							<td>9K~14K</td>
+							<td><span class="am-badge am-badge-secondary am-round">4</span></td>
+						</tr>
+						<tr>
+							<td>网易</td>
+							<td>安卓工程师</td>
+							<td>7K~12K</td>
+							<td><span class="am-badge am-round">5</span></td>
+						</tr>
+						
+				  	</table>
+	        	</div>
+	      	</section>
 
-		<ul class="am-avg-sm-4 blog-team">
+		 	<section class="am-panel am-panel-default">
+	        	<div class="am-panel-hd">网站介绍</div>
+	        	<div class="am-panel-bd">
+	          		<p>基于JavaEE技术的猎聘招聘网的设计与实现，天津工业大学软件工程专业毕业设计作品。使用AmazeUI前端框架自适应不同分辨率的屏幕。
+	          		此项目部署在阿里云云服务器上，供演示使用。希望大家多多指导，让作品变得更优秀！</p>
+	        	</div>
+	      	</section>
 
-		  <div class="am-dropdown" data-am-dropdown>
-			  <li><a href="" class="am-icon-btn am-primary am-icon-qq am-dropdown-toggle"></a></li>
-			  <div class="am-dropdown-content">
-			  	<p>ç¨æ·ç¾¤ï¼987762324</p>
-				<p>ä¼ä¸ç¾¤ï¼987762324</p>
+	      	<section class="am-panel am-panel-default">
+	        	<div class="am-panel-hd">友情链接</div>
+	        	<div class="am-panel-bd">
+	          		<ul class="am-avg-sm-4 blog-team">
+			            <li><a href="http://www.zhaopin.com"><img class="am-thumbnail"
+			                     src="img/link/zhilian.png" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.dajie.com">
+			            	<img class="am-thumbnail" src="img/link/dajie.png" alt=""/>
+			            	</a>
+			            </li>
+			            <li><a href="http://www.neitui.me"><img class="am-thumbnail"
+			                     src="img/link/neitui.jpg" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.lagou.com"><img class="am-thumbnail"
+			                     src="img/link/lagou.jpg" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.58.com"><img class="am-thumbnail"
+			                     src="img/link/58.png" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.yingjiesheng.com"><img class="am-thumbnail"
+			                     src="img/link/yingjiesheng.png" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.chinahr.com"><img class="am-thumbnail"
+			                     src="img/link/yingcai.png" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.ganji.com"><img class="am-thumbnail"
+			                     src="img/link/ganji.png" alt=""/></a>
+			            </li>
+	          		</ul>
+	        	</div>
+	      	</section>
 
-			  </div>
-			</div>
+		  	<section class="am-panel am-panel-default">
+	        	<div class="am-panel-hd">联系我们</div>
+	        	<div class="am-panel-bd">
+					<ul class="am-avg-sm-4 blog-team">
 
-			<div class="am-dropdown" data-am-dropdown>
-			 <li><a href="" class="am-icon-btn am-primary am-icon-weixin am-dropdown-toggle"></a></li>
-			  <div class="am-dropdown-content">
-			  <img class="am-thumbnail am-radius"  src="img/us/weixin1.jpg" alt="" width="140" height="140"/>
-				<p>å å³æ³¨ï¼æ´ç²¾å½©</p>
-			  </div>
-			</div>
+			  			<div class="am-dropdown" data-am-dropdown>
+				  			<li><a href="" class="am-icon-btn am-primary am-icon-qq am-dropdown-toggle"></a></li>
+				  			<div class="am-dropdown-content">
+				  				<p>QQ：987762324</p>
+				  			</div>
+				  		</div>
+				
+						<div class="am-dropdown" data-am-dropdown>
+				 			<li><a href="" class="am-icon-btn am-primary am-icon-weixin am-dropdown-toggle"></a></li>
+				  			<div class="am-dropdown-content">
+				  				<img class="am-thumbnail am-radius"  src="img/us/weixin.jpg" alt="微信号：zhuangjinxin_001" width="140" height="140"/>
+				  			</div>
+						</div>
 
-			<div class="am-dropdown" data-am-dropdown>
-			 <li><a href="http://weibo.com/allmobilize" class="am-icon-btn am-primary am-icon-weibo"></a></li>
-			  <div class="am-dropdown-content">
-			  <img class="am-thumbnail am-radius"  src="img/us/weixin1.jpg" alt="" width="140" height="140"/>
-				<p>å å³æ³¨ï¼æ´ç²¾å½©</p>
-			  </div>
-			</div>
+						<div class="am-dropdown" data-am-dropdown>
+							<li><a href="" class="am-icon-btn am-primary am-icon-envelope am-dropdown-toggle"></a></li>
+							<div class="am-dropdown-content">
+							    <p>用户反馈：yh@xiaozhao.com</p>
+								<p>企业反馈：qy@xiaozhao.com</p>
+							 </div>
+						</div>
 
-		  <div class="am-dropdown" data-am-dropdown>
-			 <li><a href="" class="am-icon-btn am-primary am-icon-envelope am-dropdown-toggle"></a></li>
-			  <div class="am-dropdown-content">
-			    <p>åé¦æè§ï¼fk@xiaozhao.com</p>
-				<p>ä¼ä¸åä½ï¼hr@xiaozhao.com</p>
-			  </div>
-			</div>
-
-          </ul>
-
-        </div>
-      </section>
+	          		</ul>
+	        	</div>
+	      	</section>
     </div>
   </div>
 
-  <button data-am-smooth-scroll class="am-btn am-btn-success">æ»å¨å°é¡¶é¨</button>
+  
 
 </div>
 
 <footer class="my-footer">
 <br>
-		<p>2015å¹´å¤©æ´¥å·¥ä¸å¤§å­¦ æ¯ä¸è®¾è®¡ <br><small>Â© Copyright åºéé«. çæææï¼ç¦æ­¢è½¬è½½.</small></p>
+		<p>2015年天津工业大学 毕业设计 <br><small>© Copyright 庄金鑫. 版权所有，禁止转载.</small></p>
   </div>
 </footer>
 

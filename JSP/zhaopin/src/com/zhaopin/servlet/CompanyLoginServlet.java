@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,8 +36,25 @@ public class CompanyLoginServlet extends HttpServlet {
         companys.setCompanypwd(companypwd);
         
         CompanysDAO cdao=new CompanysDAO();
-        if(cdao.login(companys)!=null){
-        	System.out.println("登录成功");	
+        Companys company =cdao.login(companys);
+        
+        if(company.getCompanyname()!=null){
+        	
+        	System.out.println("登录成功");
+        	String companyname=company.getCompanyname();
+        	System.out.println("企业用户:"+companyname);
+        	
+        	//设置cookie user_name
+        	Cookie cookie_name=new Cookie("name",companyname);
+        	cookie_name.setMaxAge(36000);
+        	response.addCookie(cookie_name);
+        	
+        	//设置cookie user_type
+        	Cookie cookie_type=new Cookie("type","user");
+        	cookie_type.setMaxAge(36000);
+        	response.addCookie(cookie_type);
+        	
+        	
         }else{
         	System.out.println("登录失败");
         	request.setAttribute("error","登录失败，请重新登录");

@@ -1,9 +1,10 @@
+<%@ page language="java" import="java.util.*,com.zhaopin.po.*,java.net.URLDecoder;" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title>精英人才</title>
+  <title>精英人才</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
@@ -18,7 +19,7 @@
 <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
   <div class="am-container">
     <h1 class="am-topbar-brand">
-      <a href="index.html">猎聘招聘网</a>
+      <a href="index.jsp">猎聘招聘网</a>
     </h1>
 
     <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
@@ -27,17 +28,17 @@
 
     <div class="am-collapse am-topbar-collapse" id="collapse-head">
       <ul class="am-nav am-nav-pills am-topbar-nav">
-        <li ><a href="index.html">首页</a></li>
-        <li ><a href="job.html">工作职位</a></li>
-		<li class="am-active"><a href="man.html">精英人才</a></li>
+        <li ><a href="index.jsp">首页</a></li>
+        <li ><a href="job.jsp">工作职位</a></li>
+		<li class="am-active"><a href="man.jsp">精英人才</a></li>
       </ul>
 
       <div class="am-topbar-right">
-        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> 注册</button>
+        <a href="register.jsp" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm" role="button"><span class="am-icon-pencil"></span> 注册</a>
       </div>
 
       <div class="am-topbar-right">
-        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> 登录</button>
+        <a href="login.jsp" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm" role="button"><span class="am-icon-user"></span> 登录</a>
       </div>
     </div>
   </div>
@@ -48,94 +49,49 @@
 <div class="am-g am-g-fixed blog-g-fixed">
   <div class="am-u-md-8">
     <article class="blog-main">
-		<!--搜索框-->
-		  <div class="am-input-group am-input-group-primary">
-			  <input type="text" class="am-form-field" placeholder="输入职位名称试试！如：Java工程师">
-			  <span class="am-input-group-btn">
-				<button class="am-btn am-btn-primary" type="button">搜索</button>
-			  </span>
-			</div>
-		<br>
-		<!--搜索结果面板-->
+
+
+		<!--列表框-->
 		<section class="am-panel am-panel-default">
 		  <header class="am-panel-hd">
-			<h3 class="am-panel-title">精英人才</h3>
+			<h3 class="am-panel-title">精英人才</h3>
 		  </header>
 		  <div class="am-panel-bd">
-				<div class="doc-example"><article class="am-comment">
-				<a href="#link-to-user-home"><img src="img/person/lufei.jpg" alt="" class="am-comment-avatar" width="48" height="48"/></a>
-				<div class="am-comment-main">
-				<header class="am-comment-hd">
-					<div class="am-comment-meta">
-						<a href="#link-to-user" class="am-comment-author">路飞</a>&nbsp;&nbsp;<B>Java工程师</B> 发布于 <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
-					</div>
-					<div class="am-comment-actions">
-						<a href=""><i class="am-icon-thumbs-up"></i></a> 
-						<a href=""><i class="am-icon-thumbs-down"></i></a>
-					</div>
-				</header>
-				<div class="am-comment-bd">
-					<p>那，那是一封写给南部母亲的信。我茫然站在骑楼下，我又看到永远的樱子走到街心。其实雨下得并不大，却是一生一世中最大的一场雨。而那封信是这样写的，年轻的樱子知不知道呢？</p>
-				</div>
-				</div>
-			</div>
+		  
+		  	 <%
+				List<Manlist> manlist = (List<Manlist>)request.getAttribute("manlist");
+				if(null == manlist){
+				System.out.println("为什么会是空的呢？");
+				response.sendRedirect("ManlistServlet");
+				
+				}else{
+				int i = 1;
+				for(Manlist ml : manlist){
+			%>	
+						<div class="doc-example"><article class="am-comment">
+						
+							<a href="mandetail.jsp"><img src="<%=ml.getUserphoto()%>" alt="" class="am-comment-avatar" width="48" height="48"/></a>
+							<div class="am-comment-main">
+								<header class="am-comment-hd">
+									<div class="am-comment-meta">
+										<a href="#" class="am-comment-author"><%=ml.getUsername()%></a> 发布于 <time datetime="2013-07-27T04:54:29-07:00" > <%=ml.getQ_time()%></time>
+									</div>
+									<div class="am-comment-actions"> 
+									<form class="am-form" action="MandetailServlet" method="post">
+										
+										<input type="hidden"  name="uid" value=<%=ml.getUserid()%>>
+										<i class="am-icon-file-text"></i><input type="submit" class="am-btn am-btn-link" value="简历">
+									</form>
+									</div>
+								</header>
+								<div class="am-comment-bd">
+									<p>期望职位：<%=ml.getQ_jobname()%>&nbsp;&nbsp;&nbsp;&nbsp;工作城市：<%=ml.getQ_city()%>  &nbsp;&nbsp;&nbsp;&nbsp;期望薪资：<%=ml.getQ_salary()%></p>
+								</div>
+							</div>
+						</div>
+						<br>
+			<%}} %>
 
-			<br>
-
-			<div class="doc-example"><article class="am-comment">
-				<a href="#link-to-user-home"><img src="img/person/luoluoyasuolong.jpg" alt="" class="am-comment-avatar" width="48" height="48"/></a>
-				<div class="am-comment-main">
-				<header class="am-comment-hd">
-					<div class="am-comment-meta">
-						<a href="#link-to-user" class="am-comment-author">罗罗亚.索隆</a> 发布于 <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
-					</div>
-					<div class="am-comment-actions">
-						<a href=""><i class="am-icon-thumbs-up"></i></a> 
-						<a href=""><i class="am-icon-thumbs-down"></i></a>
-					</div>
-				</header>
-				<div class="am-comment-bd">
-					<p>那，那是一封写给南部母亲的信。我茫然站在骑楼下，我又看到永远的樱子走到街心。其实雨下得并不大，却是一生一世中最大的一场雨。而那封信是这样写的，年轻的樱子知不知道呢？</p>
-				</div>
-			</div>
-
-			<br>
-				<div class="doc-example"><article class="am-comment">
-				<a href="#link-to-user-home"><img src="img/person/lufei.jpg" alt="" class="am-comment-avatar" width="48" height="48"/></a>
-				<div class="am-comment-main">
-				<header class="am-comment-hd">
-					<div class="am-comment-meta">
-						<a href="#link-to-user" class="am-comment-author">路飞</a> 发布于 <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
-					</div>
-					<div class="am-comment-actions">
-						<a href=""><i class="am-icon-thumbs-up"></i></a> 
-						<a href=""><i class="am-icon-thumbs-down"></i></a>
-					</div>
-				</header>
-				<div class="am-comment-bd">
-					<p>那，那是一封写给南部母亲的信。我茫然站在骑楼下，我又看到永远的樱子走到街心。其实雨下得并不大，却是一生一世中最大的一场雨。而那封信是这样写的，年轻的樱子知不知道呢？</p>
-				</div>
-				</div>
-			</div>
-
-			<br>
-
-			<div class="doc-example"><article class="am-comment">
-				<a href="#link-to-user-home"><img src="img/person/luoluoyasuolong.jpg" alt="" class="am-comment-avatar" width="48" height="48"/></a>
-				<div class="am-comment-main">
-				<header class="am-comment-hd">
-					<div class="am-comment-meta">
-						<a href="#link-to-user" class="am-comment-author">罗罗亚.索隆</a> 发布于 <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
-					</div>
-					<div class="am-comment-actions">
-						<a href=""><i class="am-icon-thumbs-up"></i></a> 
-						<a href=""><i class="am-icon-thumbs-down"></i></a>
-					</div>
-				</header>
-				<div class="am-comment-bd">
-					<p>那，那是一封写给南部母亲的信。我茫然站在骑楼下，我又看到永远的樱子走到街心。其实雨下得并不大，却是一生一世中最大的一场雨。而那封信是这样写的，年轻的樱子知不知道呢？</p>
-				</div>
-			</div>
 
 			
 
@@ -157,128 +113,119 @@
   <div class="am-u-md-4 blog-sidebar">
     <div class="am-panel-group">
 	  <section class="am-panel am-panel-default">
-        <div class="am-panel-hd">热门职位</div>
-        <div class="am-panel-bd">
-			<table class="am-table">
-				<tr>
-					<td>百度</td>
-					<td>产品经理</td>
-					<td>8K~15K</td>
-					<td><span class="am-badge am-badge-danger am-round">1</span></td>
-				</tr>
-				<tr>
-					<td>百度</td>
-					<td>产品经理</td>
-					<td>8K~15K</td>
-					<td><span class="am-badge am-badge-warning am-round">2</span></td>
-				</tr>
-				<tr>
-					<td>百度</td>
-					<td>产品经理</td>
-					<td>8K~15K</td>
-					<td><span class="am-badge am-badge-success am-round">3</span></td>
-				</tr>
-				<tr>
-					<td>百度</td>
-					<td>产品经理</td>
-					<td>8K~15K</td>
-					<td><span class="am-badge am-badge-secondary am-round">4</span></td>
-				</tr>
-				<tr>
-					<td>百度</td>
-					<td>产品经理</td>
-					<td>8K~15K</td>
-					<td><span class="am-badge am-round">5</span></td>
-				</tr>
-			  </table>
-        </div>
-      </section>
-	 <section class="am-panel am-panel-default">
-        <div class="am-panel-hd">热门公司</div>
-        <div class="am-panel-bd">
-          <p>前所未有的中文云端字型服务，让您在 web 平台上自由使用高品质中文字体，跨平台、可搜寻，而且超美。云端字型是我们的事业，推广字型学知识是我们的志业。从字体出发，关心设计与我们的生活，justfont blog
-            正是為此而生。</p>
-        </div>
-      </section>
+	        	<div class="am-panel-hd">热门职位</div>
+	        	<div class="am-panel-bd">
+					<table class="am-table">
 
-      <section class="am-panel am-panel-default">
-        <div class="am-panel-hd">相关链接</div>
-        <div class="am-panel-bd">
-          <ul class="am-avg-sm-4 blog-team">
-            <li><a href="http://www.zhaopin.com"><img class="am-thumbnail"
-                     src="img/link/zhilian.png" alt=""/></a>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/dajie.png" alt=""/>
-            </li>
-            <li><a href="http://www.neitui.me"><img class="am-thumbnail"
-                     src="img/link/neitui.jpg" alt=""/></a>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/lagou.jpg" alt=""/>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/58.png" alt=""/>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/yingjiesheng.png" alt=""/>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/yingcai.png" alt=""/>
-            </li>
-            <li><img class="am-thumbnail"
-                     src="img/link/ganji.png" alt=""/>
-            </li>
-          </ul>
-        </div>
-      </section>
-	  <section class="am-panel am-panel-default">
-        <div class="am-panel-hd">更多机会</div>
-        <div class="am-panel-bd">
+						<tr>
+							<td>百度</td>
+							<td>软件工程师</td>
+							<td>12K~15K</td>
+							<td><span class="am-badge am-badge-danger am-round">1</span></td>
+						</tr>
+						<tr>
+							<td>腾讯</td>
+							<td>研发工程师</td>
+							<td>10K~14K</td>
+							<td><span class="am-badge am-badge-warning am-round">2</span></td>
+						</tr>
+						<tr>
+							<td>微软</td>
+							<td>.NET工程师</td>
+							<td>8K~13K</td>
+							<td><span class="am-badge am-badge-success am-round">3</span></td>
+						</tr>
+						<tr>
+							<td>新浪</td>
+							<td>产品经理</td>
+							<td>9K~14K</td>
+							<td><span class="am-badge am-badge-secondary am-round">4</span></td>
+						</tr>
+						<tr>
+							<td>网易</td>
+							<td>安卓工程师</td>
+							<td>7K~12K</td>
+							<td><span class="am-badge am-round">5</span></td>
+						</tr>
+						
+				  	</table>
+	        	</div>
+	      	</section>
 
-		<ul class="am-avg-sm-4 blog-team">
+		 	<section class="am-panel am-panel-default">
+	        	<div class="am-panel-hd">网站介绍</div>
+	        	<div class="am-panel-bd">
+	          		<p>基于JavaEE技术的猎聘招聘网的设计与实现，天津工业大学软件工程专业毕业设计作品。使用AmazeUI前端框架自适应不同分辨率的屏幕。
+	          		此项目部署在阿里云云服务器上，供演示使用。希望大家多多指导，让作品变得更优秀！</p>
+	        	</div>
+	      	</section>
 
-		  <div class="am-dropdown" data-am-dropdown>
-			  <li><a href="" class="am-icon-btn am-primary am-icon-qq am-dropdown-toggle"></a></li>
-			  <div class="am-dropdown-content">
-			  	<p>用户群：987762324</p>
-				<p>企业群：987762324</p>
+	      	<section class="am-panel am-panel-default">
+	        	<div class="am-panel-hd">友情链接</div>
+	        	<div class="am-panel-bd">
+	          		<ul class="am-avg-sm-4 blog-team">
+			            <li><a href="http://www.zhaopin.com"><img class="am-thumbnail"
+			                     src="img/link/zhilian.png" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.dajie.com">
+			            	<img class="am-thumbnail" src="img/link/dajie.png" alt=""/>
+			            	</a>
+			            </li>
+			            <li><a href="http://www.neitui.me"><img class="am-thumbnail"
+			                     src="img/link/neitui.jpg" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.lagou.com"><img class="am-thumbnail"
+			                     src="img/link/lagou.jpg" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.58.com"><img class="am-thumbnail"
+			                     src="img/link/58.png" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.yingjiesheng.com"><img class="am-thumbnail"
+			                     src="img/link/yingjiesheng.png" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.chinahr.com"><img class="am-thumbnail"
+			                     src="img/link/yingcai.png" alt=""/></a>
+			            </li>
+			            <li><a href="http://www.ganji.com"><img class="am-thumbnail"
+			                     src="img/link/ganji.png" alt=""/></a>
+			            </li>
+	          		</ul>
+	        	</div>
+	      	</section>
 
-			  </div>
-			</div>
+		  	<section class="am-panel am-panel-default">
+	        	<div class="am-panel-hd">联系我们</div>
+	        	<div class="am-panel-bd">
+					<ul class="am-avg-sm-4 blog-team">
 
-			<div class="am-dropdown" data-am-dropdown>
-			 <li><a href="" class="am-icon-btn am-primary am-icon-weixin am-dropdown-toggle"></a></li>
-			  <div class="am-dropdown-content">
-			  <img class="am-thumbnail am-radius"  src="img/us/weixin1.jpg" alt="" width="140" height="140"/>
-				<p>加关注，更精彩</p>
-			  </div>
-			</div>
+			  			<div class="am-dropdown" data-am-dropdown>
+				  			<li><a href="" class="am-icon-btn am-primary am-icon-qq am-dropdown-toggle"></a></li>
+				  			<div class="am-dropdown-content">
+				  				<p>QQ：987762324</p>
+				  			</div>
+				  		</div>
+				
+						<div class="am-dropdown" data-am-dropdown>
+				 			<li><a href="" class="am-icon-btn am-primary am-icon-weixin am-dropdown-toggle"></a></li>
+				  			<div class="am-dropdown-content">
+				  				<img class="am-thumbnail am-radius"  src="img/us/weixin.jpg" alt="微信号：zhuangjinxin_001" width="140" height="140"/>
+				  			</div>
+						</div>
 
-			<div class="am-dropdown" data-am-dropdown>
-			 <li><a href="http://weibo.com/allmobilize" class="am-icon-btn am-primary am-icon-weibo"></a></li>
-			  <div class="am-dropdown-content">
-			  <img class="am-thumbnail am-radius"  src="img/us/weixin1.jpg" alt="" width="140" height="140"/>
-				<p>加关注，更精彩</p>
-			  </div>
-			</div>
+						<div class="am-dropdown" data-am-dropdown>
+							<li><a href="" class="am-icon-btn am-primary am-icon-envelope am-dropdown-toggle"></a></li>
+							<div class="am-dropdown-content">
+							    <p>用户反馈：yh@xiaozhao.com</p>
+								<p>企业反馈：qy@xiaozhao.com</p>
+							 </div>
+						</div>
 
-		  <div class="am-dropdown" data-am-dropdown>
-			 <li><a href="" class="am-icon-btn am-primary am-icon-envelope am-dropdown-toggle"></a></li>
-			  <div class="am-dropdown-content">
-			    <p>反馈意见：fk@xiaozhao.com</p>
-				<p>企业合作：hr@xiaozhao.com</p>
-			  </div>
-			</div>
-
-          </ul>
-
-        </div>
-      </section>
+	          		</ul>
+	        	</div>
+	      	</section>
     </div>
   </div>
-
-  <button data-am-smooth-scroll class="am-btn am-btn-success">滚动到顶部</button>
+  
 
 </div>
 

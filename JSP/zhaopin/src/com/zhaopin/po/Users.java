@@ -8,7 +8,7 @@ public class Users {
 	private String usergender;
 	private String userphoto;
 	private String userschool;
-	private String userfiled;
+	private String userfield;
 	private String usergraduate;
 	
 	public int getUserid() {
@@ -53,11 +53,11 @@ public class Users {
 	public void setUserschool(String userschool) {
 		this.userschool = userschool;
 	}
-	public String getUserfiled() {
-		return userfiled;
+	public String getUserfield() {
+		return userfield;
 	}
-	public void setUserfiled(String userfiled) {
-		this.userfiled = userfiled;
+	public void setUserfield(String userfield) {
+		this.userfield = userfield;
 	}
 	public String getUsergraduate() {
 		return usergraduate;

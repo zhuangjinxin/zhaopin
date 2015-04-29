@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Experience {
 	private int expid;
-	private String userid;
+	private int userid;
 	private String cname;
-	private String posotion;
+	private String position;
 	private Date starttime;
 	private Date endtime;
 	private String program;
@@ -19,10 +19,10 @@ public class Experience {
 	public void setExpid(int expid) {
 		this.expid = expid;
 	}
-	public String getUserid() {
+	public int getUserid() {
 		return userid;
 	}
-	public void setUserid(String userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 	public String getCname() {
@@ -31,11 +31,11 @@ public class Experience {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
-	public String getPosotion() {
-		return posotion;
+	public String getPosition() {
+		return position;
 	}
-	public void setPosotion(String posotion) {
-		this.posotion = posotion;
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	public Date getStarttime() {
 		return starttime;

@@ -1,0 +1,179 @@
+<%@ page language="java" import="java.util.*,com.zhaopin.po.*,java.net.URLDecoder;" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>用户主页</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="alternate icon" type="image/png" href="i/favicon.png">
+  <link rel="stylesheet" href="css/amazeui.min.css"/>
+  <link rel="stylesheet" href="css/personal.css"/>
+</head>
+
+<body>
+<header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+  <div class="am-container">
+    <h1 class="am-topbar-brand">
+      <a href="index.html">猎聘招聘网</a>
+    </h1>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+            data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+        class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="collapse-head">
+      <ul class="am-nav am-nav-pills am-topbar-nav">
+        <li ><a href="index.html">首页</a></li>
+        <li><a href="job.html">工作职位</a></li>
+		<li><a href="man.html">精英人才</a></li>
+      </ul>
+
+	<div class="am-topbar-right">
+      <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
+        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle>
+		庄金鑫<span class="am-icon-caret-down"></span></button>
+        <ul class="am-dropdown-content">
+          <li><a href="#"><span class="am-icon-user"></span>个人中心</a></li>
+		  <li ><a href="#"><span class="am-icon-power-off"></span>退出</a></li>
+        </ul>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</header>
+
+<br>
+
+		<div class="am-g am-g-fixed blog-g-fixed">
+		  <div class="am-cf admin-main">
+			<div class="am-u-md-3 blog-sidebar">
+
+		  <!-- sidebar start -->
+		  <div class="admin-sidebar">
+
+			<div class="am-panel am-panel-default admin-sidebar-panel">
+			  <div class="am-panel-bd">
+				<p><span class="am-icon-bookmark"></span> 个人中心</p>
+					<div id="amz-offcanvas" class="am-offcanvas doc-offcanvas">
+					<section class="amz-sidebar am-offcanvas-bar">
+					<ul class="am-nav">
+						<li><a href="userhome.jsp">我的简历</a></li>
+						<li><a href="userqiuzhi.jsp">求职信息</a></li>
+						<li><a href="useremail.jsp">邮件中心</a></li>
+						</ul>
+					</section>
+				</div>
+
+			  </div>
+			</div>
+
+			<div class="am-panel am-panel-default admin-sidebar-panel">
+			  <div class="am-panel-bd">
+				<p><span class="am-icon-bookmark"></span> 公告</p>
+				<p>时光静好，与君语；细水流年，与君同。—— Amaze UI</p>
+			  </div>
+			</div>
+
+			<div class="am-panel am-panel-default admin-sidebar-panel">
+			  <div class="am-panel-bd">
+				<p><span class="am-icon-tag"></span> 求职宣言</p>
+				<p>Welcome to the Amaze UI wiki!</p>
+			  </div>
+			</div>
+		  </div>
+		  <!-- sidebar end -->
+		  </div>
+
+		  <div class="am-u-md-9">
+		  <!-- content start -->
+		  <div class="admin-content">
+
+			<div class="am-g">
+			  <div class="am-u-md-12">
+			  
+				<div class="am-panel am-panel-default">
+				  <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">项目经验<span class="am-icon-chevron-down am-fr" ></span></div>
+				  
+
+				  <div id="collapse-panel-3" class="am-panel-bd am-collapse am-in">
+					<ul class="am-list admin-content-task">
+					
+						<%
+							List<Qiuzhi> qiuzhilist = (List<Qiuzhi>)request.getAttribute("qiuzhilist");
+							if(null == qiuzhilist){
+							System.out.println("为什么会项目经验是空的呢？");
+							response.sendRedirect("UserqiuzhiServlet");
+							
+							}else{
+							int i = 1;
+							for(Qiuzhi qz : qiuzhilist){
+						%>	
+					
+					  <li>
+						<div class="admin-task-meta"> 
+						期望职位：<%=qz.getQ_jobname() %>
+						工作城市：<%=qz.getQ_city() %>
+						期望薪资：<%=qz.getQ_salary() %>
+
+						 
+						 </div>
+						<div class="admin-task-bd">
+
+						</div>
+						<div class="am-cf">
+						  <div class="am-btn-toolbar am-fr">
+							<div class="am-btn-group am-btn-group-xs">
+								<button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span></button>
+							  	<button type="button" class="am-btn am-btn-default"><span class="am-icon-pencil"></span></button>
+							 	 <button type="button" class="am-btn am-btn-default"><span class="am-icon-times"></span></button>
+							</div>
+						  </div>
+						</div>
+					  </li>
+  					<%}} %> 
+  					
+					</ul>
+				  </div>
+				 
+				</div>
+
+			</div>
+			</div>
+
+
+		  </div>
+		  <!-- content end -->
+	</div>
+</div>
+</div>
+
+<footer class="my-footer">
+<br>
+		<p>2015年天津工业大学 毕业设计 <br><small>© Copyright 庄金鑫. 版权所有，禁止转载.</small></p>
+  </div>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="/js/polyfill/rem.min.js"></script>
+<script src="/js/polyfill/respond.min.js"></script>
+<script src="/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery.min.js"></script>
+<script src="js/amazeui.min.js"></script>
+<!--<![endif]-->
+</body>
+</html>

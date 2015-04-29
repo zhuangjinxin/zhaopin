@@ -5,10 +5,24 @@ import java.util.Date;
 public class Qiuzhi {
 	private int qiuzhiid;
 	private int userid;
-	private String q_name;
+	private String q_jobname;
 	private String q_salary;
 	private String q_city;
 	private Date q_time;
+	private String q_describe;
+	
+	public String getQ_jobname() {
+		return q_jobname;
+	}
+	public void setQ_jobname(String q_jobname) {
+		this.q_jobname = q_jobname;
+	}
+	public String getQ_describe() {
+		return q_describe;
+	}
+	public void setQ_describe(String q_describe) {
+		this.q_describe = q_describe;
+	}
 	public int getQiuzhiid() {
 		return qiuzhiid;
 	}
@@ -21,12 +35,7 @@ public class Qiuzhi {
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
-	public String getQ_name() {
-		return q_name;
-	}
-	public void setQ_name(String q_name) {
-		this.q_name = q_name;
-	}
+
 	public String getQ_salary() {
 		return q_salary;
 	}
